@@ -36,23 +36,39 @@ class _HomeState extends State<Home> {
             Positioned.fill(
               child: Row(
                 children: [
-
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: const [
-                      Text('Extempore',style: TextStyle(color: Colors.white),),
-                    ],
+                  const Expanded(
+                      flex: 1,
+                      child: SizedBox(width: 10,)
                   ),
-                  Container(
-                    width: 100,height: 100,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(image: AssetImage('assets/img.jpg'),
-                      fit: BoxFit.fill,
-                      )
+                  Expanded(
+                    flex: 6,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Text('Extempore',style: TextStyle(color: Colors.white,fontSize: 25),),
+                        SizedBox(height: 4,),
+                        Text('Get a random topic and speak on it for a small duration of time.',style: TextStyle(color: Colors.white),),
+                      ],
                     ),
                   ),
-
+                  // const SizedBox(width: 10,),
+                  const Expanded(
+                      flex: 1,
+                      child: SizedBox(width: 10,)
+                  ),
+                  Expanded(
+                    flex: -1,
+                    child: Container(
+                      width: 80,height: 80,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(image: AssetImage('assets/img.jpg'),
+                        fit: BoxFit.fill,
+                        )
+                      ),
+                    ),
+                  ),
+                const SizedBox(width: 5,)
                 ],
               ),
             ),
