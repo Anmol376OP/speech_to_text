@@ -14,8 +14,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var items = [
-    CardData('Extempore','Get a random topic and speak on it for a small duration of time.',Colors.orange,Colors.red),
-    CardData('Read n Speak','Get a random passage and speak it, while we calculate the statistics of how you speak.',Colors.lightBlueAccent,Colors.blueAccent),
+    CardData('Extempore','Get a random topic and speak on it for a small duration of time.',Colors.lightBlueAccent,Colors.blueAccent),
+    CardData('Read n Speak','Get a random passage and speak it, while we calculate the statistics of how you speak.',Colors.orange,Colors.red),
     CardData('Write Up','Get a random topic and pen down all you can about the topic.',Colors.lightGreenAccent,Colors.green),
     CardData('Blogging','Anonymously post your compositions open for all the users on this app.',Colors.pinkAccent,Colors.purple),
     CardData('Live Chat Rooms','Get in touch with many other people present online.',Colors.tealAccent,Colors.teal),
@@ -23,15 +23,31 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Center(child: const Text('SABOTAGE',style: TextStyle(color: Colors.black),)),
-      //   backgroundColor: Colors.lightBlueAccent,
-      // ),
+      appBar: AppBar(
+        title:
+        // backgroundColor: Color.fromRGBO(245, 213, 4, 100),
+        Row(
+          children: [
+            Container(
+              width: 45,height: 45,
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  image: DecorationImage(image: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDhveqtju8f8Ys7u58RPTgamMbYY8_-ykOaXCOVXMuL_jfs2ROW53YSEiUzQqbnZj9KvU&usqp=CAU'),
+                    fit: BoxFit.fill,
+                  )
+              ),
+            ),
+            SizedBox(width: 10,),
+            Text('Komms',style: TextStyle(color: Colors.black ),),
+          ],
+        ),
+        backgroundColor: Colors.orangeAccent,
+      ),
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context,index){
           return Center(
-            child: Padding(padding: const EdgeInsets.all(0),
+            child: Padding(padding: const EdgeInsets.only(top: 8),
               child: TextButton(onPressed: (){
                 if(index==0) {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=>Extempore()));
@@ -108,7 +124,7 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: 0,
-          fixedColor: Colors.lightBlueAccent,
+          fixedColor: Colors.orangeAccent,
           items: const [
             BottomNavigationBarItem(
               label: "Home",
