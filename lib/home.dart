@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
-
+import 'package:speech_to_text/writeup.dart';
+import 'package:speech_to_text/chatroom.dart';
 import 'package:speech_to_text/extempore.dart';
-// import 'package:speech_to_text/speaking.dart';
-// import 'extempore.dart';
+import 'package:speech_to_text/speaking.dart';
+import 'package:speech_to_text/blog.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -22,15 +23,29 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Wo wala app'),
-      ),
+      // appBar: AppBar(
+      //   title: Center(child: const Text('SABOTAGE',style: TextStyle(color: Colors.black),)),
+      //   backgroundColor: Colors.lightBlueAccent,
+      // ),
       body: ListView.builder(
         itemCount: items.length,
         itemBuilder: (context,index){
           return Center(
             child: Padding(padding: const EdgeInsets.all(0),
-              child: TextButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=>Extempore()));},
+              child: TextButton(onPressed: (){
+                if(index==0) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Extempore()));
+                } else if(index==1){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Speaking()));
+                } else if(index==2){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Writeup()));
+                } else if(index==3){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Blog()));
+                }
+                else{
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>ChatRoom()));
+                }
+                },
                 child: Stack(
                   children: [
                     Container(
@@ -91,6 +106,24 @@ class _HomeState extends State<Home> {
           );
         },
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          fixedColor: Colors.lightBlueAccent,
+          items: const [
+            BottomNavigationBarItem(
+              label: "Home",
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+              label: "Search",
+              icon: Icon(Icons.search),
+            ),
+            BottomNavigationBarItem(
+              label: "Profile",
+              icon: Icon(Icons.account_circle),
+            ),
+          ],
+          onTap: (int indexOfItem) {}),
     );
   }
 }
